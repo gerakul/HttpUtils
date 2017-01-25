@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Reflection;
 
-namespace Gerakul.HttpUtils
+namespace Gerakul.HttpUtils.Core
 {
     internal static class HttpHelper
     {

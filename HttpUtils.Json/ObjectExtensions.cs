@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gerakul.HttpUtils
+namespace Gerakul.HttpUtils.Json
 {
     internal static class ObjectExtensions
     {

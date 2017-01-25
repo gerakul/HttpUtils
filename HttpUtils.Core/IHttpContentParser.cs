@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Gerakul.HttpUtils
+namespace Gerakul.HttpUtils.Core
 {
     public interface IHttpContentParser
     {
