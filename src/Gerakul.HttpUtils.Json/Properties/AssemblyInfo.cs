@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HttpUtils.Json")]
+[assembly: AssemblyProduct("Gerakul.HttpUtils.Json")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -16,4 +16,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("76c5e94e-7d00-41af-b7c5-3ac5b3e1e60d")]
+[assembly: Guid("5823b356-ed63-4417-8c49-05d01b2b5a23")]

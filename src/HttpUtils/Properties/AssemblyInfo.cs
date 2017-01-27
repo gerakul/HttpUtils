@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("gerakul")]
-[assembly: AssemblyProduct("HttpUtils.Core")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("HttpUtils")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -16,4 +16,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("37a4c95c-d07c-44b0-9ab0-3bd887992bbb")]
+[assembly: Guid("63d05fcd-eeb4-4090-9edf-0da0e9d93b78")]
