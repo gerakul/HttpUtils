@@ -8,11 +8,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{40A8908C-DC15-4EB0-AA08-3DEE3E90E581}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		..\..\..\GitLab\luv\Crashes\NuGet.config = ..\..\..\GitLab\luv\Crashes\NuGet.config
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Gerakul.HttpUtils.Core", "src\Gerakul.HttpUtils.Core\Gerakul.HttpUtils.Core.xproj", "{AD163DA4-4600-4739-9060-5F36683FACAF}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Gerakul.HttpUtils.Json", "src\Gerakul.HttpUtils.Json\Gerakul.HttpUtils.Json.xproj", "{5823B356-ED63-4417-8C49-05D01B2B5A23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7E784A14-139D-471C-A079-C65616CBBA36}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TestConsole", "TestConsole\TestConsole.xproj", "{5DD20163-F7B8-4296-A061-55DB07C5D5D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +33,10 @@ Global
 		{5823B356-ED63-4417-8C49-05D01B2B5A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5823B356-ED63-4417-8C49-05D01B2B5A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5823B356-ED63-4417-8C49-05D01B2B5A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD20163-F7B8-4296-A061-55DB07C5D5D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD20163-F7B8-4296-A061-55DB07C5D5D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD20163-F7B8-4296-A061-55DB07C5D5D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD20163-F7B8-4296-A061-55DB07C5D5D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +44,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AD163DA4-4600-4739-9060-5F36683FACAF} = {84407AE2-4396-4892-BF1C-F2E936A92053}
 		{5823B356-ED63-4417-8C49-05D01B2B5A23} = {84407AE2-4396-4892-BF1C-F2E936A92053}
+		{5DD20163-F7B8-4296-A061-55DB07C5D5D2} = {7E784A14-139D-471C-A079-C65616CBBA36}
 	EndGlobalSection
 EndGlobal

@@ -14,7 +14,9 @@ namespace Gerakul.HttpUtils.Core
         IHttpContentParser ContentParser { get; }
         Task<HttpResult<T>> Send<T>(HttpMethod method, string path,
             object parameters = null, object body = null, object headers = null,
-            Func<HttpRequestMessage, Task> requestPreparation = null);
+            Func<HttpRequestMessage, Task> requestPreparation = null,
+            Func<object, Task<HttpContent>> customContentGetter = null,
+            Func<HttpContent, Task<T>> customContentParser = null);
     }
 
     public static class SimpleHttpClientExtensions

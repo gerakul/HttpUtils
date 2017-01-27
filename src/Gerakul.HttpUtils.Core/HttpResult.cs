@@ -11,12 +11,12 @@ namespace Gerakul.HttpUtils.Core
         private HttpClient httpClient;
         private HttpRequestMessage httpRequestMessage;
 
-        public T Result { get; private set; }
+        public T Body { get; private set; }
         public HttpResponseMessage Response { get; private set; }
 
-        internal HttpResult(T result, HttpResponseMessage response, HttpClient httpClient, HttpRequestMessage httpRequestMessage)
+        internal HttpResult(T body, HttpResponseMessage response, HttpClient httpClient, HttpRequestMessage httpRequestMessage)
         {
-            this.Result = result;
+            this.Body = body;
             this.Response = response;
             this.httpClient = httpClient;
             this.httpRequestMessage = httpRequestMessage;
@@ -31,9 +31,9 @@ namespace Gerakul.HttpUtils.Core
     }
     public class HttpResult
     {
-        public static HttpResult<T> Create<T>(T result, HttpResponseMessage response, HttpClient httpClient, HttpRequestMessage httpRequestMessage)
+        public static HttpResult<T> Create<T>(T body, HttpResponseMessage response, HttpClient httpClient, HttpRequestMessage httpRequestMessage)
         {
-            return new HttpResult<T>(result, response, httpClient, httpRequestMessage);
+            return new HttpResult<T>(body, response, httpClient, httpRequestMessage);
         }
     }
 }

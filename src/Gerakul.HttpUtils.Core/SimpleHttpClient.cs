@@ -8,7 +8,7 @@ namespace Gerakul.HttpUtils.Core
 {
     public class SimpleHttpClient : ISimpleHttpClient
     {
-        public SimpleHttpClient(IHttpContentGetter contentGetter, IHttpContentParser contentParser,
+        protected SimpleHttpClient(IHttpContentGetter contentGetter, IHttpContentParser contentParser,
             string baseAddress = null, Func<HttpRequestMessage, Task> mainRequestPreparation = null)
         {
             this.ContentGetter = contentGetter;
@@ -24,7 +24,9 @@ namespace Gerakul.HttpUtils.Core
 
         public async Task<HttpResult<T>> Send<T>(HttpMethod method, string path,
             object parameters = null, object body = null, object headers = null,
-            Func<HttpRequestMessage, Task> requestPreparation = null)
+            Func<HttpRequestMessage, Task> requestPreparation = null,
+            Func<object, Task<HttpContent>> customContentGetter = null,
+            Func<HttpContent, Task<T>> customContentParser = null)
         {
             HttpClient httpClient = new HttpClient();
             string uri = string.IsNullOrWhiteSpace(BaseAddress) ? path : $"{BaseAddress}/{path}";
@@ -38,7 +40,8 @@ namespace Gerakul.HttpUtils.Core
 
             if (body != null)
             {
-                mess.Content = await ContentGetter.GetContent(body);
+                mess.Content = customContentGetter != null ? 
+                    await customContentGetter(body) : await ContentGetter.GetContent(body);
             }
 
             if (headers != null)
@@ -58,8 +61,14 @@ namespace Gerakul.HttpUtils.Core
 
             var resp = await httpClient.SendAsync(mess);
 
-            var obj = await ContentParser.ParseContent<T>(resp.Content);
+            var obj = customContentParser != null ? await customContentParser(resp.Content) : await ContentParser.ParseContent<T>(resp.Content);
             return HttpResult.Create(obj, resp, httpClient, mess);
+        }
+
+        public static SimpleHttpClient Create(IHttpContentGetter contentGetter, IHttpContentParser contentParser,
+            string baseAddress = null, Func<HttpRequestMessage, Task> mainRequestPreparation = null)
+        {
+            return new SimpleHttpClient(contentGetter, contentParser, baseAddress, mainRequestPreparation);
         }
     }
 }

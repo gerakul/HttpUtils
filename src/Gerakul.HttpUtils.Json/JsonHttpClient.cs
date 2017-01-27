@@ -9,7 +9,7 @@ namespace Gerakul.HttpUtils.Json
 {
     public class JsonHttpClient : SimpleHttpClient
     {
-        private JsonHttpClient(IHttpContentGetter contentGetter, IHttpContentParser contentParser, 
+        protected JsonHttpClient(IHttpContentGetter contentGetter, IHttpContentParser contentParser, 
             string baseAddress = null, Func<HttpRequestMessage, Task> mainRequestPreparation = null) 
             : base(contentGetter, contentParser, baseAddress, mainRequestPreparation)
         {
