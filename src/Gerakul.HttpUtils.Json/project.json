@@ -9,6 +9,8 @@
     "summary": "Utils for working with http based on JSON"
   },
 
+  "description": "Utils for working with http based on JSON",
+
   "authors": [ "gerakul" ],
 
   "dependencies": {

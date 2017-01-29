@@ -9,6 +9,8 @@
     "summary": "Utils for http"
   },
 
+  "description": "Utils for http",
+
   "authors": [ "gerakul" ],
 
   "dependencies": {
