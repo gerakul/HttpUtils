@@ -36,9 +36,14 @@ namespace Gerakul.HttpUtils.Core
             Func<object, Task<HttpContent>> customContentGetter = null,
             Func<HttpContent, Task<T>> customContentParser = null)
         {
-            var res = await obj.Send<T>(method, path, parameters, body, headers, requestPreparation, customContentGetter, customContentParser);
-            res.Response.EnsureSuccessStatusCode();
-            return res.Body;
+            T resObj;
+            using (var res = await obj.Send<T>(method, path, parameters, body, headers, requestPreparation, customContentGetter, customContentParser))
+            {
+                res.Response.EnsureSuccessStatusCode();
+                resObj = res.Body;
+            }
+
+            return resObj;
         }
         public static Task<T> SendEnsureAnonimous<T>(this ISimpleHttpClient obj, T proto, HttpMethod method, string path,
             object parameters = null, object body = null, object headers = null,
