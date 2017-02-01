@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Gerakul.HttpUtils.Core
 {
-    public class SimpleHttpClient : ISimpleHttpClient
+    public class CustomHttpClient : ISimpleHttpClient
     {
-        protected SimpleHttpClient(IHttpContentGetter contentGetter, IHttpContentParser contentParser,
+        protected CustomHttpClient(IHttpContentGetter contentGetter, IHttpContentParser contentParser,
             string baseAddress = null, Func<HttpRequestMessage, Task> mainRequestPreparation = null)
         {
             this.ContentGetter = contentGetter;
@@ -65,10 +65,10 @@ namespace Gerakul.HttpUtils.Core
             return HttpResult.Create(obj, resp, httpClient, mess);
         }
 
-        public static SimpleHttpClient Create(IHttpContentGetter contentGetter, IHttpContentParser contentParser,
+        public static CustomHttpClient Create(IHttpContentGetter contentGetter, IHttpContentParser contentParser,
             string baseAddress = null, Func<HttpRequestMessage, Task> mainRequestPreparation = null)
         {
-            return new SimpleHttpClient(contentGetter, contentParser, baseAddress, mainRequestPreparation);
+            return new CustomHttpClient(contentGetter, contentParser, baseAddress, mainRequestPreparation);
         }
     }
 }

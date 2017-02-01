@@ -7,7 +7,7 @@ using System.Net.Http;
 
 namespace Gerakul.HttpUtils.Json
 {
-    public class JsonHttpClient : SimpleHttpClient
+    public class JsonHttpClient : CustomHttpClient
     {
         protected JsonHttpClient(IHttpContentGetter contentGetter, IHttpContentParser contentParser, 
             string baseAddress = null, Func<HttpRequestMessage, Task> mainRequestPreparation = null) 
