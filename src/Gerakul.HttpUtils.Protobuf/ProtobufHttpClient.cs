@@ -25,19 +25,14 @@ namespace Gerakul.HttpUtils.Protobuf
         {
         }
 
-        public static ProtobufHttpClient Create(string baseAddress = null,
-            IEnumerable<IUntypedMessageDescriptor> descriptors = null,
-            bool includeDefaultRequestPreparation = true,
+        public static Func<HttpRequestMessage, Task> GetMainRequestPreparation(bool includeDefaultRequestPreparation = true,
             Func<HttpRequestMessage, Task> additionalRequestPreparation = null)
         {
-            ProtobufContentSerializer pcs = new ProtobufContentSerializer(descriptors);
-
-            Func<HttpRequestMessage, Task> mainRequestPreparation;
             if (includeDefaultRequestPreparation)
             {
                 if (additionalRequestPreparation != null)
                 {
-                    mainRequestPreparation = async r =>
+                    return async r =>
                     {
                         r.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/x-protobuf"));
                         await additionalRequestPreparation(r);
@@ -45,7 +40,7 @@ namespace Gerakul.HttpUtils.Protobuf
                 }
                 else
                 {
-                    mainRequestPreparation = r =>
+                    return r =>
                     {
                         r.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/x-protobuf"));
                         return Task.CompletedTask;
@@ -54,10 +49,27 @@ namespace Gerakul.HttpUtils.Protobuf
             }
             else
             {
-                mainRequestPreparation = additionalRequestPreparation;
+                return additionalRequestPreparation;
             }
+        }
 
-            return new ProtobufHttpClient(pcs, pcs, baseAddress, mainRequestPreparation);
+        public static ProtobufHttpClient Create(string baseAddress = null,
+            IEnumerable<IUntypedMessageDescriptor> descriptors = null,
+            bool includeDefaultRequestPreparation = true,
+            Func<HttpRequestMessage, Task> additionalRequestPreparation = null)
+        {
+            ProtobufContentSerializer pcs = new ProtobufContentSerializer(descriptors);
+            return new ProtobufHttpClient(pcs, pcs, baseAddress,
+                GetMainRequestPreparation(includeDefaultRequestPreparation, additionalRequestPreparation));
+        }
+
+        public static ProtobufHttpClient Create(ProtobufContentSerializer protobufContentSerializer,
+            string baseAddress = null,
+            bool includeDefaultRequestPreparation = true,
+            Func<HttpRequestMessage, Task> additionalRequestPreparation = null)
+        {
+            return new ProtobufHttpClient(protobufContentSerializer, protobufContentSerializer, baseAddress, 
+                GetMainRequestPreparation(includeDefaultRequestPreparation, additionalRequestPreparation));
         }
     }
 }

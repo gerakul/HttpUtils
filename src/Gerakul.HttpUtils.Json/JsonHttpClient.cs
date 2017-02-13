@@ -20,5 +20,11 @@ namespace Gerakul.HttpUtils.Json
             JsonContentSerializer jcs = new JsonContentSerializer();
             return new JsonHttpClient(jcs, jcs, baseAddress, mainRequestPreparation);
         }
+
+        public static JsonHttpClient Create(JsonContentSerializer jsonContentSerializer, 
+            string baseAddress = null, Func<HttpRequestMessage, Task> mainRequestPreparation = null)
+        {
+            return new JsonHttpClient(jsonContentSerializer, jsonContentSerializer, baseAddress, mainRequestPreparation);
+        }
     }
 }

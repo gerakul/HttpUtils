@@ -25,6 +25,11 @@ namespace Gerakul.HttpUtils.Protobuf
             }
         }
 
+        public ProtobufContentSerializer(MessageDescriptorContainer descriptorContainer)
+        {
+            this.DescriptorContainer = descriptorContainer;
+        }
+
         public Task<HttpContent> GetContent(object obj)
         {
             byte[] body = null;
