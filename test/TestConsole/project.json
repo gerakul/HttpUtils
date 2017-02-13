@@ -1,15 +1,18 @@
-﻿{
+{
   "version": "1.0.0-*",
   "buildOptions": {
     "emitEntryPoint": true
   },
 
   "dependencies": {
-    "Microsoft.NETCore.App": {
-      "type": "platform",
-      "version": "1.0.1"
-    },
-    "Gerakul.HttpUtils.Json": "1.0.0"
+    "Microsoft.NETCore.App": "1.1.0",
+    "Gerakul.HttpUtils.Json": { "target": "project" },
+    "Gerakul.HttpUtils.Protobuf": { "target": "project" }
+  },
+
+  "runtimes": {
+    "win10-x86": {},
+    "win10-x64": {}
   },
 
   "frameworks": {

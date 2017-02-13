@@ -9,12 +9,27 @@ namespace Gerakul.HttpUtils.Core
 {
     internal static class HttpHelper
     {
+        private static string GetValueString(PropertyInfo pi, object obj, string separator, bool escape)
+        {
+            var val = pi.GetValue(obj);
+            var e = val as System.Collections.IEnumerable;
+
+            if (e != null && !pi.PropertyType.Equals(typeof(string)))
+            {
+                return string.Join(separator, e.Cast<object>());
+            }
+            else
+            {
+                return escape ? Uri.EscapeDataString(val.ToString()) : val.ToString();
+            }
+        }
+
         public static string GetParamString(object parameters, bool escape = true)
         {
             var props = parameters.GetType().GetTypeInfo().DeclaredProperties.Where(x => x.CanRead).ToArray();
 
             return string.Join("&",
-                props.Select(x => $"{x.Name}={(escape ? Uri.EscapeDataString(x.GetValue(parameters).ToString()) : x.GetValue(parameters))}"));
+                props.Select(x => $"{x.Name}={GetValueString(x, parameters, ",", escape)}"));
         }
 
         public static string AddParams(string uri, object parameters, bool escape = true)
@@ -25,16 +40,6 @@ namespace Gerakul.HttpUtils.Core
                 return $"{uri}?{ps}";
             }
             return uri;
-        }
-
-        public static void AddHeaders(HttpRequestMessage mess, object headers)
-        {
-            var props = headers.GetType().GetTypeInfo().DeclaredProperties.Where(x => x.CanRead).ToArray();
-
-            foreach (var p in props)
-            {
-                mess.Headers.Add(p.Name, p.GetValue(headers).ToString());
-            }
         }
     }
 }

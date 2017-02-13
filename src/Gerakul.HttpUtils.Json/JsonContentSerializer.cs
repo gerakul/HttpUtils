@@ -20,7 +20,6 @@ namespace Gerakul.HttpUtils.Json
         public async Task<T> ParseContent<T>(HttpContent content)
         {
             var respBody = await content.ReadAsStringAsync();
-
             T obj = typeof(T).Equals(typeof(string)) ? respBody.CastTo<T>() : Newtonsoft.Json.JsonConvert.DeserializeObject<T>(respBody);
             return obj;
         }

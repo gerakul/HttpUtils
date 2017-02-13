@@ -23,7 +23,7 @@ namespace Gerakul.HttpUtils.Core
         public IHttpContentParser ContentParser { get; private set; }
 
         public async Task<HttpResult<T>> Send<T>(HttpMethod method, string path,
-            object parameters = null, object body = null, object headers = null,
+            object parameters = null, object body = null,
             Func<HttpRequestMessage, Task> requestPreparation = null,
             Func<object, Task<HttpContent>> customContentGetter = null,
             Func<HttpContent, Task<T>> customContentParser = null)
@@ -42,11 +42,6 @@ namespace Gerakul.HttpUtils.Core
             {
                 mess.Content = customContentGetter != null ? 
                     await customContentGetter(body) : await ContentGetter.GetContent(body);
-            }
-
-            if (headers != null)
-            {
-                HttpHelper.AddHeaders(mess, headers);
             }
 
             if (MainRequestPreparation != null)
