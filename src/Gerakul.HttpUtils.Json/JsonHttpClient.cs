@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace Gerakul.HttpUtils.Json
 {
@@ -15,9 +16,10 @@ namespace Gerakul.HttpUtils.Json
         {
         }
 
-        public static JsonHttpClient Create(string baseAddress = null, Func<HttpRequestMessage, Task> mainRequestPreparation = null)
+        public static JsonHttpClient Create(string baseAddress = null, Func<HttpRequestMessage, Task> mainRequestPreparation = null,
+            JsonSerializerSettings jsonSerializerSettings = null)
         {
-            JsonContentSerializer jcs = new JsonContentSerializer();
+            JsonContentSerializer jcs = new JsonContentSerializer(jsonSerializerSettings);
             return new JsonHttpClient(jcs, jcs, baseAddress, mainRequestPreparation);
         }
 
