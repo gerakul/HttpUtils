@@ -1,26 +1,29 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "packOptions": {
     "owners": [ "gerakul" ],
     "repository": {
       "type": "git",
       "url": "https://github.com/gerakul/HttpUtils"
     },
-    "summary": "Utils for working with http based on Protobuf"
+    "summary": "Based on Protobuf utils for working with http"
   },
 
-  "description": "Utils for working with http based on Protobuf",
+  "description": "Based on Protobuf utils for working with http",
 
   "authors": [ "gerakul" ],
 
   "dependencies": {
-    "NETStandard.Library": "1.6.1",
-    "Gerakul.HttpUtils.Core": "1.0.4",
-    "Gerakul.ProtoBufSerializer": "1.0.3"
+    "Gerakul.HttpUtils.Core": "1.0.5",
+    "Gerakul.ProtoBufSerializer": "1.1.1"
   },
 
   "frameworks": {
     "netstandard1.3": {
-    }
+      "dependencies": {
+        "NETStandard.Library": "1.6.1"
+      }
+    },
+    "net460": {}
   }
 }
