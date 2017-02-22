@@ -26,7 +26,7 @@ namespace Gerakul.HttpUtils.Core
 
         public static string GetParamString(object parameters, bool escape = true)
         {
-            var props = parameters.GetType().GetTypeInfo().DeclaredProperties.Where(x => x.CanRead).ToArray();
+            var props = parameters.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(x => x.CanRead).ToArray();
 
             return string.Join("&",
                 props.Select(x => $"{x.Name}={GetValueString(x, parameters, ",", escape)}"));
