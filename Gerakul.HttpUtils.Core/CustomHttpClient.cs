@@ -29,7 +29,7 @@ namespace Gerakul.HttpUtils.Core
             Func<HttpContent, Task<T>> customContentParser = null)
         {
             HttpClient httpClient = new HttpClient();
-            string uri = string.IsNullOrWhiteSpace(BaseAddress) ? path : $"{BaseAddress}/{path}";
+            string uri = string.IsNullOrWhiteSpace(BaseAddress) ? path : $"{BaseAddress.TrimEnd('/')}/{path.TrimStart('/')}";
 
             if (parameters != null)
             {
