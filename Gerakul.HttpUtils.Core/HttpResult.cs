@@ -24,9 +24,18 @@ namespace Gerakul.HttpUtils.Core
 
         public void Dispose()
         {
-            Response?.Dispose();
-            httpRequestMessage?.Dispose();
-            httpClient?.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Response?.Dispose();
+                httpRequestMessage?.Dispose();
+                httpClient?.Dispose();
+            }
         }
     }
     public class HttpResult
