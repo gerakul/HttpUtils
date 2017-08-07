@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;net46</TargetFrameworks>
+    <Version>1.0.2</Version>
+    <Authors>gerakul</Authors>
+    <Description>Based on Protobuf utils for working with http</Description>
+    <RepositoryUrl>https://github.com/gerakul/HttpUtils</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gerakul.HttpUtils.Core\Gerakul.HttpUtils.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gerakul.ProtoBufSerializer" Version="1.1.1" />
+  </ItemGroup>
+
+</Project>

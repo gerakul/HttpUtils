@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;net46</TargetFrameworks>
+    <Version>1.0.6</Version>
+    <Authors>gerakul</Authors>
+    <Description>Based on JSON utils for working with http</Description>
+    <RepositoryUrl>https://github.com/gerakul/HttpUtils</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>  
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gerakul.HttpUtils.Core\Gerakul.HttpUtils.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+  
+</Project>
