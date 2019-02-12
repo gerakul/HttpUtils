@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;netstandard2.0;net46</TargetFrameworks>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <Authors>gerakul</Authors>
     <Description>Utils for http</Description>
     <RepositoryUrl>https://github.com/gerakul/HttpUtils</RepositoryUrl>
